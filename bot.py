@@ -37,7 +37,7 @@ nest_asyncio.apply()
 username_filter_active = True
 # List of usernames whose comments should be echoed when the filter is on.
 username_monitoring_list = [ ]
-# Reference to the async task that 
+# Reference to the async task that reads RPAN comments, so that it can be stopped.
 task_handle = None
 
 bot = commands.Bot(command_prefix='!rcs ')
