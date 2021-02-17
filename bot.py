@@ -13,8 +13,11 @@
 # You should have received a copy of the GNU General Public License along with RpanCommentStreamer. If not, see
 # <http://www.gnu.org/licenses/>.
 
-import asyncio
+# Enable nested async loops. This must happen before importing asyncio.
 import nest_asyncio
+nest_asyncio.apply()
+
+import asyncio
 import os
 import random
 
@@ -25,9 +28,6 @@ from dotenv import load_dotenv
 # Load Discord token from the .env file.
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-
-# Enable nested async loops.
-nest_asyncio.apply()
 
 # TODO The next three variables are SHARED by a single instance of the bot!
 # TODO That means each instance of the bot should run in only one server at a time!
