@@ -91,13 +91,14 @@ async def start(ctx, stream_id):
     elif task_handle is not None:
         await ctx.send('Bot is already started - please stop it first :)')
     else:
+        await ctx.send('Starting...')
         stream = AsyncRpanCommentStreamer(stream_id)
 
         # This is the method that is called on each new comment to echo it in your channel.
         # You can change this method to do whatever you like.
         async def message_handler(comment: RpanComment):
             if not username_filter_active or comment.author in username_monitoring_list:
-                await ctx.send(comment.author + ': ' + comment.body)
+                await ctx.send(f'**{comment.author}**: {comment.body}')
 
         # This is the method called by AsyncRpanCommentStreamer to print log messages.
         # As written, they are also echoed in the channel. You can have it print somewhere else if you like.
@@ -111,10 +112,10 @@ async def start(ctx, stream_id):
 @bot.command(name='stop', help='Stops any monitoring.')
 async def stop(ctx):
     global task_handle
-    await ctx.send('Stopping...')
     if task_handle is None:
         await ctx.send('Bot is already stopped - try starting it first :)')
     else:
+        await ctx.send('Stopping...')
         task_handle.cancel()
         task_handle = None
         await ctx.send('RPAN monitoring stopped.')
