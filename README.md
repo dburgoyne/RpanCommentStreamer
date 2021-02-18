@@ -1,5 +1,5 @@
 # RpanCommentStreamer
-A Discord bot that can echo comments made on Reddit Public Access Network (RPAN) streams in near-real-time.
+A Discord bot that can echo comments made on Reddit Public Access Network (RPAN) streams in near-real-time. Possible uses include broadcasting announcements or keeping track of your friends' comments in noisy streams.
 
 ## Requirements
 ```
